@@ -68,3 +68,13 @@ export interface Subscription {
   trial_end?: string;
   prices?: Price;
 }
+
+export interface Trade {
+  id: string /* primary key */;
+  user_id: string;
+  entry_price?: string;
+  exit_price?: string;
+  entry_date?: Date;
+  exit_date?: Date;
+  notes?: string;
+}

@@ -1,5 +1,5 @@
 import { supabaseClient, User } from '@supabase/supabase-auth-helpers/nextjs';
-import { ProductWithPrice, UserDetails } from 'types';
+import { ProductWithPrice, Trade, UserDetails } from 'types';
 
 export const supabase = supabaseClient;
 
@@ -29,4 +29,17 @@ export const updateUserName = async (user: User, name: string) => {
       full_name: name
     })
     .eq('id', user.id);
+};
+
+export const getTrades = async (): Promise<Trade[]> => {
+  const { data, error } = await supabase
+  .from('trades')
+  .select('*');
+
+  if (error) {
+    console.log(error.message);
+    throw error;
+  }
+
+  return data || [];
 };

@@ -65,6 +65,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
           case 'customer.subscription.created':
           case 'customer.subscription.updated':
           case 'customer.subscription.deleted':
+            // eslint-disable-next-line no-case-declarations
             const subscription = event.data.object as Stripe.Subscription;
             await manageSubscriptionStatusChange(
               subscription.id,
@@ -73,6 +74,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             );
             break;
           case 'checkout.session.completed':
+            // eslint-disable-next-line no-case-declarations
             const checkoutSession = event.data
               .object as Stripe.Checkout.Session;
             if (checkoutSession.mode === 'subscription') {

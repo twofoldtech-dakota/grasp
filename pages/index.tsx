@@ -1,23 +1,29 @@
-import Pricing from 'components/Pricing';
-import { getActiveProductsWithPrices } from 'utils/supabase-client';
-import { Product } from 'types';
+import TradesList from '@/components/trades/TradesList';
+import { getTrades } from 'utils/supabase-client';
+import { Trade } from 'types';
 import { GetStaticPropsResult } from 'next';
+import ContentWrapper from '@/components/ui/ContentWrapper/ContentWrapper';
+import Stats from '@/components/stats/Stats';
 
 interface Props {
-  products: Product[];
+  trades: Trade[];
 }
 
-export default function PricingPage({ products }: Props) {
-  return <Pricing products={products} />;
+export default function TradesPage({ trades }: Props) {
+  return (
+    <ContentWrapper title='Dashboard'>
+      <Stats />
+      <TradesList trades={trades} title="Recent Trades"/>
+    </ContentWrapper>
+  );
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
-  const products = await getActiveProductsWithPrices();
+  const trades = await getTrades();
 
   return {
     props: {
-      products
+      trades
     },
-    revalidate: 60
   };
 }

@@ -8,6 +8,7 @@ import { UserProvider } from '@supabase/supabase-auth-helpers/react';
 import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
 import { AppProps } from 'next/app';
 import { MyUserContextProvider } from 'utils/useUser';
+import { ThemeProvider } from 'next-themes';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -15,13 +16,15 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <div className="bg-black">
+    <div>
       <UserProvider supabaseClient={supabaseClient}>
-        <MyUserContextProvider supabaseClient={supabaseClient}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </MyUserContextProvider>
+        <ThemeProvider>
+          <MyUserContextProvider supabaseClient={supabaseClient}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </MyUserContextProvider>
+        </ThemeProvider>
       </UserProvider>
     </div>
   );
