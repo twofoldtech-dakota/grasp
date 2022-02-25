@@ -1,8 +1,3 @@
-import Link from 'next/link';
-
-import Logo from 'components/icons/Logo';
-import GitHub from 'components/icons/GitHub';
-
 export default function Footer() {
   return (
     <footer className="p-10 rounded footer bg-base-300 text-base-content footer-center">
