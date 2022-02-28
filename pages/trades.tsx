@@ -4,20 +4,21 @@ import { Trade } from 'types';
 import { GetStaticPropsResult } from 'next';
 import ContentWrapper from '@/components/ui/ContentWrapper/ContentWrapper';
 import Stats from '@/components/stats/Stats';
-import Layout from '@/components/Layout';
+import SidebarLayout from '@/components/SidebarLayout';
 
 interface Props {
     trades: Trade[];
 }
 
 export default function TradesPage({ trades }: Props) {
+    const pageTitle = 'Trades';
     return (
-        <Layout>
-            <ContentWrapper title="Dashboard">
+        <SidebarLayout title={pageTitle}>
+            <ContentWrapper title={pageTitle}>
                 <Stats />
                 <TradesList trades={trades} title="Recent Trades" />
             </ContentWrapper>
-        </Layout>
+        </SidebarLayout>
     );
 }
 

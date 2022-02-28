@@ -12,7 +12,6 @@ const Navbar = () => {
 
     return (
         <div className="navbar bg-base-300">
-
             <div className="navbar-start">
                 <div className="dropdown">
                     <label className="btn btn-ghost lg:hidden">
@@ -31,18 +30,18 @@ const Navbar = () => {
                             />
                         </svg>
                     </label>
-                    {user && (
-                        <ul
-                            tabIndex={0}
-                            className="p-2 mt-3 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                        >
-                            <li>
-                                <Link href="/trades">
-                                    <a>Trades</a>
-                                </Link>
-                            </li>
-                        </ul>
-                    )}
+                    {/* {user && ( */}
+                    <ul
+                        tabIndex={0}
+                        className="p-2 mt-3 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                    >
+                        <li>
+                            <Link href="/trades">
+                                <a>Trades</a>
+                            </Link>
+                        </li>
+                    </ul>
+                    {/* )} */}
                 </div>
                 <Link href="/">
                     <a
@@ -52,17 +51,6 @@ const Navbar = () => {
                         <Logo />
                     </a>
                 </Link>
-            </div>
-            <div className="hidden navbar-center lg:flex">
-                {user && (
-                    <ul className="p-0 menu menu-horizontal">
-                        <li>
-                            <Link href="/trades">
-                                <a>Trades</a>
-                            </Link>
-                        </li>
-                    </ul>
-                )}
             </div>
             <div className="navbar-end">
                 {user ? (
@@ -124,7 +112,7 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li className="self-center">
-                          <ThemeChanger />
+                            <ThemeChanger />
                         </li>
                     </ul>
                 )}

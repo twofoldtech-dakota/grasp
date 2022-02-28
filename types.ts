@@ -77,4 +77,5 @@ export interface Trade {
   entry_date?: Date;
   exit_date?: Date;
   notes?: string;
+  asset: string;
 }

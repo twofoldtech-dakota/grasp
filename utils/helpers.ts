@@ -1,4 +1,11 @@
+import { useState } from 'react';
 import { Price } from 'types';
+
+export const AppConfig = {
+  site_name: 'Grasp',
+  description: 'Crypto trading journal that helps you find your edge',
+  locale: 'en',
+};
 
 export const getURL = () => {
   const url =
@@ -36,7 +43,22 @@ export const postData = async ({
 };
 
 export const toDateTime = (secs: number) => {
-  var t = new Date('1970-01-01T00:30:00Z'); // Unix epoch start.
+  const t = new Date('1970-01-01T00:30:00Z'); // Unix epoch start.
   t.setSeconds(secs);
   return t;
 };
+
+export const useMenu = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const handleToggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const handleClose = () => {
+    setShowMenu(false);
+  };
+
+  return { showMenu, handleToggleMenu, handleClose };
+};
+
